@@ -1,0 +1,8 @@
+BODY::> ------------Sent at: 2011-04-25 09:41:17 -0600Subject: This is the subject line 1From: Victors & Spoils <noreply@victorsandspoils.com>This is the body of a message 1.------------Sent at: 2011-04-25 09:41:17 -0600Subject: This is the subject line 2From: Victors & Spoils <noreply@victorsandspoils.com>This is the body of a message 2.------------Sent at: 2011-04-25 09:41:17 -0600Subject: This is the subject line 3From: Victors & Spoils <noreply@victorsandspoils.com>This is the body of a message 3.
+[Mailer Example]To: seanzehnder@gmail.comFrom: mailer@victorsandspoils.comSubject: Daily Digest from Victors & Spoils------------Sent at: 2011-04-25 09:41:17 -0600Subject: This is the subject line 1From: Victors & Spoils <noreply@victorsandspoils.com>This is the body of a message 1.------------Sent at: 2011-04-25 09:41:17 -0600Subject: This is the subject line 2From: Victors & Spoils <noreply@victorsandspoils.com>This is the body of a message 2.------------Sent at: 2011-04-25 09:41:17 -0600Subject: This is the subject line 3From: Victors & Spoils <noreply@victorsandspoils.com>This is the body of a message 3.
+BODY::> This email has a body.
+[Mailer Example]To: test2@mail.comFrom: Victors & Spoils <noreply@victorsandspoils.com>Subject: This email has a body.
+BODY::> This email has a body.
+[Mailer Example]To: info12@victorsandspoils.comFrom: Victors & Spoils <noreply@victorsandspoils.com>Subject: This email has a body.
+BODY::> This email has a body.
+[Mailer Example]To: info13@victorsandspoils.comFrom: Victors & Spoils <noreply@victorsandspoils.com>Subject: This email has a body.
