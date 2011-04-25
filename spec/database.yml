@@ -6,7 +6,7 @@ mysql2:
   adapter: mysql2
   host: localhost   
   username: root
-  password: bobo
+  password: 
   database: digest_mailer_test
   pool: 5
   port: 3306

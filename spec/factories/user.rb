@@ -96,7 +96,7 @@ end
 Factory.define :creative_director_user, :default_strategy => :build, :class => 'User' do |creative_director|
   creative_director.first_name "Creative"
   creative_director.last_name "Director"
-  creative_director.email "creative@victorsandspoils.com"
+  creative_director.email "creative-dev@victorsandspoils.com"
 #  creative_director.roles { [ @member_role ] }
   creative_director.discipline_id 1
   creative_director.confirmed_at Time.new.to_s
