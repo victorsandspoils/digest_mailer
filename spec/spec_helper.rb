@@ -26,20 +26,6 @@ ActiveRecord::Migration.verbose = true
 Rails.logger = Logger.new(File.open('log/digest_mailer_test.log', 'w'))
 ActiveRecord::Base.logger = Logger.new(File.open('log/digest_mailer_activerecord.log', 'w'))
 
-RSpec.configure do |config|
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
-
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end
-end
 
 ActiveRecord::Schema.define do
   create_table :delayed_jobs, :force => true do |table|
@@ -246,5 +232,20 @@ module DelayedJobSpecHelper
       job.payload_object.perform
       job.destroy
     end
+  end
+end
+
+RSpec.configure do |config|
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
   end
 end
