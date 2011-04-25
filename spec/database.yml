@@ -4,7 +4,7 @@ sqlite3:
 
 mysql2:
   adapter: mysql2
-  hostname: victors-stage.cr8guujt7srm.us-east-1.rds.amazonaws.com
+  host: victors-stage.cr8guujt7srm.us-east-1.rds.amazonaws.com
   username: victors
   password: kraftwerk77
   database: digest_mailer_test
