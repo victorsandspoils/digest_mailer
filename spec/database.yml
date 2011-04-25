@@ -4,9 +4,9 @@ sqlite3:
 
 mysql2:
   adapter: mysql2
-  host: victors-stage.cr8guujt7srm.us-east-1.rds.amazonaws.com
-  username: victors
-  password: kraftwerk77
+  host: localhost   
+  username: root
+  password: bobo
   database: digest_mailer_test
   pool: 5
   port: 3306
