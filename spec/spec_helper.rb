@@ -13,6 +13,17 @@ require 'factory_girl'
 require 'delayed_job'
 require 'database_cleaner'
 require 'shoulda' 
+ 
+#DigestMailer::MailOrchestrator.logger = Logger.new('/tmp/digest_mailer.log')
+ENV['RAILS_ENV'] = 'test'
+
+config = YAML.load(File.read('spec/database.yml'))
+ActiveRecord::Base.configurations = {'test' => config['mysql2']}
+ActiveRecord::Base.establish_connection
+
+ActiveRecord::Migration.verbose = true
+Rails.logger = Logger.new(File.open('log/digest_mailer_test.log', 'w'))
+ActiveRecord::Base.logger = Logger.new(File.open('log/digest_mailer_activerecord.log', 'w'))
 
 RSpec.configure do |config|
   config.before(:suite) do
@@ -28,17 +39,6 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 end
- 
-#DigestMailer::MailOrchestrator.logger = Logger.new('/tmp/digest_mailer.log')
-ENV['RAILS_ENV'] = 'test'
-
-config = YAML.load(File.read('spec/database.yml'))
-ActiveRecord::Base.configurations = {'test' => config['sqlite3']}
-ActiveRecord::Base.establish_connection
-
-ActiveRecord::Migration.verbose = false
-Rails.logger = Logger.new(File.open('log/digest_mailer_test.log', 'w'))
-ActiveRecord::Base.logger = Logger.new(File.open('log/digest_mailer_activerecord.log', 'w'))
 
 ActiveRecord::Schema.define do
   create_table :delayed_jobs, :force => true do |table|
