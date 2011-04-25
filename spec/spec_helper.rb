@@ -1,3 +1,5 @@
+ENV['RAILS_ENV'] = 'test'
+
 $:.unshift(File.dirname(__FILE__) + '/../lib')
 
 require 'rubygems'
@@ -15,7 +17,6 @@ require 'database_cleaner'
 require 'shoulda' 
  
 #DigestMailer::MailOrchestrator.logger = Logger.new('/tmp/digest_mailer.log')
-ENV['RAILS_ENV'] = 'test'
 
 config = YAML.load(File.read('spec/database.yml'))
 ActiveRecord::Base.configurations = {'test' => config['mysql2']}
