@@ -3,7 +3,7 @@ require 'spec_helper'
 describe DigestMailer::MailOrchestrator do
   include DelayedJobSpecHelper
   
-  before(:all) do 
+  before(:each) do 
     @standard_role = Factory.create(:standard_role)
     @cd_role = Factory.create(:cd_role)
     @admin_role = Factory.create(:admin_role)
@@ -41,7 +41,7 @@ describe DigestMailer::MailOrchestrator do
   end
 
   describe "recipients_by_scope" do 
-    before(:all) do
+    before(:each) do
       @message_params = {:other_recipients => ['szehnder@victorsandspoils.com'], :body => 'This message has a body.'}
       @idea = Factory.create(:idea, :user => @d1, :project => @project)
       @idea2 = Factory.create(:idea, :user => @d2, :project => @project)
