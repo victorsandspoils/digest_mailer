@@ -19,7 +19,7 @@ require 'shoulda'
 #DigestMailer::MailOrchestrator.logger = Logger.new('/tmp/digest_mailer.log')
 
 config = YAML.load(File.read('spec/database.yml'))
-ActiveRecord::Base.configurations = {'test' => config['mysql2']}
+ActiveRecord::Base.configurations = {'test' => config['sqlite3']}
 ActiveRecord::Base.establish_connection
 
 ActiveRecord::Migration.verbose = true
