@@ -10,3 +10,7 @@ mysql2:
   database: digest_mailer_test
   pool: 5
   port: 3306
+  
+test:
+  adapter: sqlite3
+  database: digest_mailer.sqlite3

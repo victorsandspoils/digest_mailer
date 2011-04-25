@@ -18,7 +18,7 @@ require 'shoulda'
  
 #DigestMailer::MailOrchestrator.logger = Logger.new('/tmp/digest_mailer.log')
 
-config = YAML.load(File.read('spec/database.yml'))
+config = YAML.load(File.read('config/database.yml'))
 ActiveRecord::Base.configurations = {'test' => config['sqlite3']}
 ActiveRecord::Base.establish_connection
 
