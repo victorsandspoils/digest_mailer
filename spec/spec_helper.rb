@@ -28,7 +28,7 @@ ActiveRecord::Base.logger = Logger.new(File.open('log/digest_mailer_activerecord
 
 RSpec.configure do |config|
   config.before(:suite) do
-    DatabaseCleaner.strategy = :deletion
+    DatabaseCleaner.strategy = :transaction  
     DatabaseCleaner.clean_with(:truncation)
   end
 
