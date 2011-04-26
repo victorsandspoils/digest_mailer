@@ -4,10 +4,9 @@ $:.unshift(File.dirname(__FILE__) + '/../lib')
 
 require 'rubygems'
 require 'bundler/setup'
+require 'rails'
 require 'rspec'
 require 'logger'
-
-require 'rails'
 require 'active_record'
 require 'action_mailer'
 
@@ -15,7 +14,7 @@ require 'factory_girl'
 require 'delayed_job'
 require 'database_cleaner'
 require 'shoulda' 
- 
+  
 #DigestMailer::MailOrchestrator.logger = Logger.new('/tmp/digest_mailer.log')
 
 config = YAML.load(File.read('config/database.yml'))
@@ -27,8 +26,9 @@ Rails.logger = Logger.new(File.open('log/digest_mailer_test.log', 'w'))
 ActiveRecord::Base.logger = Logger.new(File.open('log/digest_mailer_activerecord.log', 'w'))
 
 RSpec.configure do |config|
+
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction  
+    DatabaseCleaner.strategy = :truncation  
     DatabaseCleaner.clean_with(:truncation)
   end
 
