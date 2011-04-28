@@ -16,11 +16,13 @@ class EmailDigest < ActiveRecord::Base
   end
   
   def self.embargoed_until_by_digest_type(digest_type)
-    case digest_type.name
+    case digest_type.name.downcase
     when 'daily'
-      Time.now.midnight
+      #Time.now.midnight
+      Time.now + 15.seconds
     when 'weekly'
-      Time.next(:monday).beginning
+      #Time.next(:monday).beginning
+      Time.now + 30.seconds
     end
   end
   
@@ -45,10 +47,10 @@ class EmailDigest < ActiveRecord::Base
   
   def build_digest_message() 
     msg_body = construct_message_body()
-    email_message = EmailMessage.new(:from_email => "mailer@victorsandspoils.com", 
-                                      :body => msg_body, 
-                                      :subject => "#{digest_type.name.capitalize} Digest from Victors & Spoils", :body_type => 'plain', :email_type => 'digest', :collation_type => "#{digest_type}")
-    DigestMailer::PendingMessage.new(self.user, email_message, Time.now, 'generic_message')
+    # email_message = EmailMessage.new(:from_email => "mailer@victorsandspoils.com", 
+    #                                       :body => msg_body, 
+    #                                       :subject => get_subject, :body_type => 'plain', :email_type => 'digest', :collation_type => "#{digest_type}")
+    DigestMailer::PendingDigestMessage.new(self.user, self, Time.now, 'digest_message')
   end
   
   def construct_message_body()
@@ -60,6 +62,10 @@ class EmailDigest < ActiveRecord::Base
       body += msg.to_digest_fragment
     end
     body
+  end
+  
+  def get_subject
+    "#{digest_type.name.capitalize} Digest from Victors & Spoils"
   end
   
 end

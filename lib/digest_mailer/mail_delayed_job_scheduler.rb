@@ -6,7 +6,7 @@ module DigestMailer
     
     def self.enqueue_digest(email_digest)
       @pending_digest_jobs = [] if !@pending_digest_jobs
-      @pending_digest_jobs << email_digest.delay(:run_at => Time.now + 2.minutes).send_message
+      @pending_digest_jobs << email_digest.delay(:run_at => email_digest.embargoed_until).send_message
     end
     
     def self.user_has_pending_digest?(user)

@@ -40,16 +40,17 @@ module DigestMailer
 
     # Used for admin messages and anything generic
     def generic_message(recipient_email, msg)
-      @body = msg[:body]
+      @msg = msg[:body]
         mail(:to => recipient_email, :from => msg[:from_email], :subject => msg[:subject])
         MailLogger.log(recipient_email, msg, 'generic_message', msg[:intended_sent_at])
         Rails.logger.info("[Mailer Example]\r\rTo: #{recipient_email}\rFrom: #{msg[:from_email]}\rSubject: #{msg[:subject]}\r#{msg[:body]}")
     end
     
     # used for digest emails
-    def self.digest_message(msg)
-      @msg = msg
-      mail(:to => msg[:to], :subject => msg[:subject])
+    def digest_message(recipient_email, digest)
+      @digest = digest
+      MailLogger.log(recipient_email, @digest, 'digest_message', @digest[:intended_sent_at])
+      mail(:to => recipient_email, :subject => @digest.get_subject)
     end
 
     # Sends email when users who have been imported into the new site from the old
