@@ -18,11 +18,17 @@ class EmailDigest < ActiveRecord::Base
   def self.embargoed_until_by_digest_type(digest_type)
     case digest_type.name.downcase
     when 'daily'
-      #Time.now.midnight
-      Time.now + 15.seconds
+      if (Rails.env=='test' || Rails.env=='szehnder')
+        Time.now + 15.seconds
+      else
+        Time.now.midnight
+      end        
     when 'weekly'
-      #Time.next(:monday).beginning
-      Time.now + 30.seconds
+      if (Rails.env=='test' || Rails.env=='szehnder')
+        Time.now + 30.seconds
+      else
+        Time.next(:monday).beginning
+      end
     end
   end
   
