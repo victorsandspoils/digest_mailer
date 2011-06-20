@@ -3,13 +3,13 @@ module DigestMailer
     default :from => "Victors & Spoils <noreply@victorsandspoils.com>"
 
     # entity registration receipt
-    def self.entity_registration_receipt(entity)
+    def entity_registration_receipt(entity)
       @entity = entity
       mail(:to => "help@victorsandspoils.com", :subject => "New Client Registration")
     end
     
     # entity message
-    def self.entity_message(entity)
+    def entity_message(entity)
       @entity = entity
       mail(:to => entity.users.first.email, :subject => "Thanks for Contacting Victors & Spoils")
     end
@@ -27,13 +27,13 @@ module DigestMailer
     end
 
     # Email receipt that idea was properly submitted
-    def self.idea_message(idea)
+    def idea_message(idea)
       @idea = idea
       mail(:to => idea.user.email, :subject => idea.title)
     end
 
     # Email message notifying V&S of an idea submission
-    def self.idea_notice(idea)
+    def idea_notice(idea)
       @idea = idea
       mail(:to => "help@victorsandspoils.com", :subject => "Victors & Spoils Idea Notice")
     end
@@ -54,7 +54,7 @@ module DigestMailer
     end
 
     # Sends email when users who have been imported into the new site from the old
-    def self.invite_legacy_user_message(user)
+    def invite_legacy_user_message(user)
       @user = user
       DigestMailer::MailDispatcher.mail(:to => user.email, :subject => "Update your V&S Account")
     end
