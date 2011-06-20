@@ -15,13 +15,13 @@ module DigestMailer
     end
     
     # Contact form confirmation message
-    def self.contact_message(contact)
+    def contact_message(contact)
       @contact = contact
       mail(:to => contact.email, :subject => "Thanks for Contacting Victors & Spoils")
     end
 
     # Contact form to help@victorsandspoils.com
-    def self.contact_message_receipt(contact)
+    def contact_message_receipt(contact)
       @contact = contact
       mail(:to => "help@victorsandspoils.com", :subject => "V&S Contact Form")
     end
